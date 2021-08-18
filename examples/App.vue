@@ -1,14 +1,17 @@
 <template>
   <div id="app">
-    hahs
+
   </div>
 </template>
 
 <script>
-
 export default {
   name: 'App',
-  components: {}
+  data() {
+    return {
+
+    }
+  },
 }
 </script>
 

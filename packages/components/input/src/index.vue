@@ -5,14 +5,11 @@
     :rules="rules"
     :prop="formName"
   >
-    <!-- el-input本身有name属性，所以也使用 -->
     <!-- el-input本身没有formatter故自己实现 -->
     <el-input
       :value="value"
       :type="type"
       :placeholder="placeholder"
-      :name="formName"
-      :disabled="disabled"
       :readonly="readonly"
       clearable
       :show-password="type == 'password'"

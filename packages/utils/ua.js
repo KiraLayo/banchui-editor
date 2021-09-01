@@ -10,3 +10,8 @@ export function ua() {
 
 // 是否为移动设备
 export var isMobile = ua().device.type == "mobile";
+
+export default {
+  ua: ua(),
+  isMobile
+}

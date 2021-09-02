@@ -1,7 +1,7 @@
-import BCRadio from './src'
+import FMCRadio from './src'
 
-BCRadio.install = function (Vue) {
-  Vue.component(BCRadio.name, BCRadio)
+FMCRadio.install = function (Vue) {
+  Vue.component(FMCRadio.name, FMCRadio);
 }
 
-export default BCRadio
+export default FMCRadio;

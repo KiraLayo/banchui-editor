@@ -1,65 +1,75 @@
 <template>
-  <!-- el-from-item prop关联表单属性 -->
-  <el-form-item
-    :label="label"
-    :rules="rules"
-    :prop="formName"
+  <el-input
+    v-if="isInputComponent"
+    :value="value"
+    :type="type"
+    :placeholder="placeholder"
+    clearable
+    @change="onChange"
+    @input="$emit('input', $event)"
+    @focus="$emit('focus')"
+    @blur="$emit('blur')"
   >
-    <!-- el-input本身没有formatter故自己实现 -->
-    <el-input
-      :value="value"
-      :type="type"
-      :placeholder="placeholder"
-      :readonly="readonly"
-      clearable
-      :show-password="type == 'password'"
-      @input="onInput"
-      @focus="$emit('focus')"
-      @blur="$emit('blur')"
-    >
-      <template v-if="prepend" #prepend>
-        {{ prepend }}
-      </template>
-      <template v-if="append" #append>
-        {{ append }}
-      </template>
-    </el-input>
-  </el-form-item>
+    <template v-if="prepend" #prepend>
+      {{ prepend }}
+    </template>
+    <template v-if="append" #append>
+      {{ append }}
+    </template>
+  </el-input>
+  <el-input-number
+    v-else-if="isInputNumberComponent"
+    :value="value"
+    :placeholder="placeholder"
+    @input="$emit('input', $event)"
+    @change="$emit('change', $event)"
+    @focus="$emit('focus')"
+    @blur="$emit('blur')"
+  />
 </template>
 
 <script>
-import propsMixin from "~/components/mixins/props-mixin";
 export default {
-  name: "BCInput",
-  mixins: [propsMixin],
+  name: "FMCInput",
   props: {
-    value: [String, Number],
-    placeholder: String,
-    // text、number、textarea，password
     type: {
+      // text、textarea、number
       type: String,
       default: "text",
     },
-    readonly: Boolean,
+    value: [String, Number],
+    placeholder: String,
     prepend: String,
     append: String,
     formatter: {
       type: Object,
-      default: ()=>{
+      default: () => {
         return {
           trim: true,
-          parrent: ""
-        }
-      }
-    }
+        };
+      },
+    },
+  },
+  computed: {
+    isInputComponent() {
+      return this.type == "text" || this.type == "textarea";
+    },
+    isInputNumberComponent() {
+      return this.type == "number";
+    },
   },
   methods: {
-    onInput(val) {
+    onChange(val) {
       var inputVal = val;
-      if (this.inputVal && this.formatter) {
-        inputVal = this.formatter(inputVal);
+      if (
+        this.inputVal &&
+        this.inputVal instanceof String &&
+        this.formatter &&
+        this.formatter.trim
+      ) {
+        inputVal = inputVal.trim();
       }
-      this.$emit("input", inputVal);
+      this.$emit("change", inputVal);
     },
   },
 };

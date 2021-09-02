@@ -1,7 +1,7 @@
-import BCSelect from './src'
+import FMCSelect from "./src";
 
-BCSelect.install = function (Vue) {
-  Vue.component(BCSelect.name, BCSelect)
-}
+FMCSelect.install = function (Vue) {
+  Vue.component(FMCSelect.name, FMCSelect);
+};
 
-export default BCSelect
+export default FMCSelect;

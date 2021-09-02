@@ -1,7 +1,7 @@
-import BCInput from './src'
+import FMCInput from "./src"
 
-BCInput.install = function (Vue) {
-  Vue.component(BCInput.name, BCInput)
+FMCInput.install = function (Vue) {
+  Vue.component(FMCInput.name, FMCInput);
 }
 
-export default BCInput
+export default FMCInput;

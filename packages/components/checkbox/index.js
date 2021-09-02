@@ -1,7 +1,7 @@
-import BCCheckbox from './src'
+import FMCCheckbox from "./src";
 
-BCCheckbox.install = function (Vue) {
-  Vue.component(BCCheckbox.name, BCCheckbox)
-}
+FMCCheckbox.install = function (Vue) {
+  Vue.component(FMCCheckbox.name, FMCCheckbox)
+};
 
-export default BCCheckbox
+export default FMCCheckbox;

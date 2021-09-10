@@ -39,7 +39,7 @@ rules都是结合了vant和element的form相关组件功能实现，为了达成
 #### checkbox
 #### time
 #### date
-#### dateTime
+#### datetime
 #### select
 #### upload
 #### editor

@@ -1,15 +1,20 @@
 <template>
   <div id="app">
-
+    <BCLocation/>
   </div>
 </template>
 
 <script>
+import BCLocation from '~/components/location'
+
 export default {
   name: 'App',
+  components: { 
+    BCLocation
+  },
   data() {
     return {
-
+      
     }
   },
 }
